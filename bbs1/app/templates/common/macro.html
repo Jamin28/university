@@ -1,0 +1,35 @@
+{#第一个参数 分页对象  第二对象 用户点击了 跳转到哪里去#}
+{% macro pagination_show(pagination,endpoint) %}
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+{#      上一页#}
+    <li {% if not pagination.has_prev%}class="disabled" {% else %}{% endif %}>
+      <a href="{% if pagination.has_prev%}{{ url_for(endpoint,page=pagination.prev_num,**kwargs) }}{%else %}#{% endif %}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+
+
+{#        中间页码#}
+     </li>
+
+    {% for p in pagination.iter_pages() %}
+        {% if p %}
+            <li {% if pagination.page ==p %}class="active" {%else %} {% endif %}><a href="{% if pagination.page==p %}#{% else %}{{ url_for(endpoint,page=p,**kwargs) }}{% endif %}">{{ p }}</a></li>
+        {% else %}
+{#            如果没有值 显示 ...#}
+            <li><a href="#">&hellip;</a></li>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+{#      下一页#}
+    <li {% if not pagination.has_next%}class="disabled" {% else %}{% endif %}>
+      <a href="{% if pagination.has_next%}{{ url_for(endpoint,page=pagination.prev_num,**kwargs) }}{%else %}#{% endif %}" aria-label="Previous">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endmacro %}

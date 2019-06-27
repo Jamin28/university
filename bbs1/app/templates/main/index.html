@@ -1,0 +1,56 @@
+{% extends 'common/base.html' %}
+{% from 'common/macro.html' import  pagination_show%}
+{% block title %}
+    首页
+{% endblock %}
+
+{% block page_content %}
+    {{ wtf.quick_form(form) }}
+    {% for p in posts %}
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="{{ url_for('static',filename='upload/'+p.user.icon) }}" alt="头像" style="width: 64px;height: 64px">
+                </a>
+            </div>
+            <div class="media-body">
+                <div style="float: right">{{ moment(p.timestamp).fromNow() }}</div>
+                <h4 class="media-heading">{{ p.title }}</h4>
+                {{ p.content }}
+                {% if current_user.is_authenticated %}
+                <div url="{{ url_for(posts.collect.pid==p.id) }}" style="cursor:pointer" class="collect">
+
+                    {% if current_user.is_favorite(p.id) %}
+                            取消收藏
+                        {% else %}
+                            收藏
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {{ pagination_show(pagination,'main.index',id=3,username='zxy') }}
+{#    {{ pagination.links }}#}
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+       $(function(){}
+            $('.collect').click(function () {
+                _this = this
+                $.get($(this).attr('url').function(){
+                    if ($(_this).text() == '收藏'){
+                        $(_this).text('取消收藏')
+
+                    }else {
+                        $(_this).text('收藏')
+                    }
+                });
+            })
+
+       )
+    </script>
+{% endblock %}
