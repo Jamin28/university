@@ -1,0 +1,57 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/moviemain.css') }}">
+{% endblock %}
+{% block main %}
+    <ul class="question-list-group">
+        <li>
+            <div class="avater-group">
+                <img src="https://p1.meituan.net/movie/20803f59291c47e1e116c11963ce019e68711.jpg@160w_220h_1e_1c" alt=""
+                     class="avatar">
+            </div>
+            <div class="question-group">
+                <p class="question-title"><a href="#">
+                    霸王别姬
+                </a>
+                </p>
+                <p class="stars">主演: 张国荣,张丰毅,巩俐</p>
+                <p class="releasetime">上映时间: 1993-01-01</p>
+                <p class="question-content">
+                    《霸王别姬》改编自李碧华同名小说，由陈凯歌执导，张国荣、张丰毅、巩俐主演的电影。叙述伶人程蝶衣对国粹艺术的执著，进而投影出历史与文化在大时代的演变下，造成的激荡与人生。影片蕴含深厚的文化内涵，气势恢宏，感情强烈，情节细腻深远。
+                    本片获得第46届法国戛纳国际电影节金棕榈奖，成为第一部也是迄今唯一获得此奖项的华语电影。
+                </p>
+                <div class="question-info">
+                    <span class="question-author">三金酱</span>
+                    <span class="question-time">1111.11.11</span>
+                </div>
+                <div class="movie-item-number score-num">
+                    <p class="score"><i class="integer">9.</i><i class="fraction">6</i></p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="avater-group">
+                <img src="https://p1.meituan.net/movie/20803f59291c47e1e116c11963ce019e68711.jpg@160w_220h_1e_1c" alt=""
+                     class="avatar">
+            </div>
+            <div class="question-group">
+                <p class="question-title"><a href="#">
+                    霸王别姬
+                </a>
+                </p>
+                <p class="stars">主演: 张国荣,张丰毅,巩俐</p>
+                <p class="releasetime">上映时间: 1993-01-01</p>
+                <p class="question-content">
+                    《霸王别姬》改编自李碧华同名小说，由陈凯歌执导，张国荣、张丰毅、巩俐主演的电影。叙述伶人程蝶衣对国粹艺术的执著，进而投影出历史与文化在大时代的演变下，造成的激荡与人生。影片蕴含深厚的文化内涵，气势恢宏，感情强烈，情节细腻深远。
+                    本片获得第46届法国戛纳国际电影节金棕榈奖，成为第一部也是迄今唯一获得此奖项的华语电影。
+                </p>
+                <div class="question-info">
+                    <span class="question-author">三金酱</span>
+                    <span class="question-time">1111.11.11</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+{% endblock %}

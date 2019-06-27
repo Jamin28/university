@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    互动交流
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/question.css') }}">
+{% endblock %}
+{% block main %}
+    <h3 class="page-title">互动交流</h3>
+    <form action="" method="POST">
+        <div class="form-container">
+            <div class="form-group">
+                <input type="text" placeholder="请输入标题" class="form-control" name="title">
+            </div>
+            <div class="form-group">
+                <textarea name="content" class="form-control" rows="6" placeholder="请输入内容"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">发布</button>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,79 @@
+.main{
+    background: #ffffff;
+    width: 950px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+ul{
+    list-style: none;
+    padding-left: 0px;
+}
+ul li{
+    list-style: none;
+    border-bottom: 1px solid#eee;
+    overflow: hidden;
+    padding: 15px 0;
+}
+.avater-group{
+    width: 160px;
+    height: 100%;
+    float: left;
+}
+img.avatar{
+    width: 160px;
+    height: 220px;
+}
+
+.question-group{
+    float: left;
+    width: 680px;
+    height: 220px;
+    margin-left: 40px;
+}
+.question-title a{
+    font-size: 26px;
+    color: #333;
+    width: 200px;
+    display: block;
+    font-weight: 900;
+
+}
+.question-info{
+    text-align: right;
+    padding: 5px;
+}
+.question-info .question-author{
+    margin-right: 20px;
+}
+.question-content{
+    margin-bottom: 10px;
+}
+.releasetime{
+    color: #999;
+    width: 200px;
+}
+.stars{
+    width: 400px;
+}
+.score {
+    position: relative;
+    margin-left: 400px;
+    margin-top: -200px;
+    color: dodgerblue;
+}
+.score .integer {
+    font-size: 56px;
+    font-weight: 700;
+}
+.score-num .fraction {
+    font-size: 43px;
+    font-weight: 700;
+}
+i{
+    font-style: italic;
+}
+.del{
+    position: relative;
+    margin-left: 820px;
+    margin-top: 0px;
+}

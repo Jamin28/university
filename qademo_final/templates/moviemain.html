@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% from 'macro.html' import  pagination_show%}
+{% block title %}电影首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/moviemain.css') }}">
+{% endblock %}
+{% block main %}
+    <ul class="question-list-group">
+        {% for movie in movies %}
+            <li>
+                <div class="avater-group">
+                    <img src="{{ movie.image }}" alt=""
+                         class="avatar">
+                </div>
+                <div class="question-group">
+                    <p class="question-title"><a href="{{ url_for('detail',movie_id=movie.id) }}">
+                        {{ movie.title }}
+                    </a>
+                    </p>
+                    <p class="stars">{{ movie.actor }}</p>
+                    <p class="releasetime">{{ movie.times }}</p>
+                    <p class="question-content">
+                        {{ movie.summary }}
+                    </p>
+                    <div class="movie-item-number score-num">
+                        <p class="score"><i class="fraction">{{ movie.score }}</i></p>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ pagination_show(pagination,'moviemain',id=3,username='zz') }}
+{% endblock %}

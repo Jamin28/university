@@ -1,0 +1,43 @@
+{% extends 'adminbase.html' %}
+{% block title %}
+    管理员登录
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+{% endblock %}
+{% block main %}
+    <h3 class="page-title">修改数据</h3>
+    <form action="" method="POST">
+        <div class="form-container">
+            <div class="form-group">
+                <label for="exampleInputEmail1">修改的电影ID</label>
+                <input type="text" class="form-control" placeholder="修改的电影ID" name="movieId">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">电影名称</label>
+                <input type="text" class="form-control" placeholder="电影名称" name="title">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">图片链接</label>
+                <input type="text" class="form-control" placeholder="image href" name="image">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">主演</label>
+                <input type="text" class="form-control" placeholder="主演" name="actor">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">上映时间</label>
+                <input type="text" class="form-control" placeholder="上映时间" name="times">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">电影评分</label>
+                <input type="text" class="form-control" placeholder="电影评分" name="score">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">电影简介</label>
+                <input type="text" class="form-control" placeholder="电影简介" name="summary">
+            </div>
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+    </form>
+{% endblock %}

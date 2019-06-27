@@ -1,0 +1,1 @@
+hello {{ name }} {{ url_for('activate',token=token,_external=True) }}
