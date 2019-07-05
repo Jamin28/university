@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    修改密码页面
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-title">修改密码</h3>
+    <p class="page-title">{{ msg }}</p>
+    <form action="{% url 'myApp:update_pwd' %}" method="post">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="form-group">
+                <input type="hidden" value="{{ c }}" name="code">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">密码</label>
+                <input type="password" class="form-control" placeholder="输入你的新密码" name="password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">确认密码</label>
+                <input type="password" class="form-control" placeholder="输入你的确认密码" name="repassword">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">立即修改</button>
+
+        </div>
+    </form>
+{% endblock %}

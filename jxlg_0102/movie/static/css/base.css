@@ -1,0 +1,26 @@
+.logo {
+    width: 40px;
+}
+
+body {
+    background: #f3f3f3;
+    background: url("/static/images/bg.jpg") no-repeat;
+    background-size: 100%
+}
+
+.main {
+    background: #fff;
+    width: 730px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.form-container {
+    width: 300px;
+    margin: 0 auto;
+}

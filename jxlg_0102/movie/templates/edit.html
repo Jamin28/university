@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    评论留言
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            'mode': 'textareas',
+            'theme': 'advanced',
+            'width': 800,
+            'height': 400,
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+ <h3 class="page-title">留言/评论</h3>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+            </div>
+            <div class="col-md-6 column">
+
+                <form action="{% url 'myApp:edit' %}" method="post">
+                    {% csrf_token %}
+                    <textarea name="str"></textarea>
+                     <button type="submit" class="btn btn-primary btn-block" style="width: 400px">点击评论</button>
+                </form>
+            </div>
+
+        </div>
+    <div class="col-md-2 column">
+               您的留言如下：
+{#            {{ str|safe }}#}
+        {% autoescape off %}
+            {{ str }}
+        {% endautoescape %}
+            </div>
+    </div>
+
+{% endblock %}

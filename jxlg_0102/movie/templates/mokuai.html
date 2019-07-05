@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    各大电影排行
+{% endblock %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-title">各大排行</h3>
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-4 column">
+                    <h4 style="text-align: center"><a href="{% url 'myApp:box_office' 1 %}">2018票房排行</a></h4>
+					<ol>
+                        {% for box in boxs %}
+                            {% if forloop.counter < 11 %}
+                                <li>{{ box.name }}&nbsp;&nbsp;------&nbsp;&nbsp;{{ box.box_office }}美元</li>
+                            {% endif %}
+                        {% endfor %}
+
+					</ol>
+				</div>
+				<div class="col-md-4 column">
+                   <h4 style="text-align: center">2018评分排行</h4>
+					<ol>
+                        {% for score in scores %}
+                            {% if forloop.counter < 11 %}
+                                <li>{{ score.name }}&nbsp;&nbsp;------&nbsp;&nbsp;{{ score.score }}分</li>
+                            {% endif %}
+                        {% endfor %}
+
+					</ol>
+				</div>
+				<div class="col-md-4 column">
+                   <h4 style="text-align: center">2018评论数排行</h4>
+					<ol>
+                        {% for num in score_nums %}
+                            {% if forloop.counter < 11 %}
+                                <li>{{ num.name }}&nbsp;&nbsp;------&nbsp;&nbsp;{{ num.score_num }}条</li>
+                            {% endif %}
+                        {% endfor %}
+
+					</ol>
+				</div>
+			</div>
+
+            <br><br><br>
+			<div class="row clearfix">
+				<div class="col-md-4 column">
+                   <h4 style="text-align: center">实时电影票房排行</h4>
+					<ol>
+                        {% for rbox in rboxs %}
+                            {% if forloop.counter < 11 %}
+                                <li>{{ rbox.name }}&nbsp;&nbsp;------&nbsp;&nbsp;{{ rbox.boxoffice_realtime }}万元</li>
+                            {% endif %}
+                        {% endfor %}
+
+					</ol>
+				</div>
+				<div class="col-md-4 column">
+                  <h4 style="text-align: center">总电影票房排行</h4>
+					<ol>
+                        {% for tbox in tboxs %}
+                            {% if forloop.counter < 11 %}
+                                <li>{{ tbox.name }}&nbsp;&nbsp;------&nbsp;&nbsp;{{ tbox.boxoffice_total }}亿元</li>
+                            {% endif %}
+                        {% endfor %}
+
+					</ol>
+				</div>
+				<div class="col-md-4 column">
+                    <h4 style="text-align: center">实时评分排行</h4>
+					<ol>
+                        {% for s in score_s %}
+                            {% if forloop.counter < 11 %}
+                                <li>{{ s.name }}&nbsp;&nbsp;------&nbsp;&nbsp;{{ s.score }}分</li>
+                            {% endif %}
+                        {% endfor %}
+
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

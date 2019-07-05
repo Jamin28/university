@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+    找回密码
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script type="text/javascript">
+        $(function () {
+            // 刷新
+            $('.captcha').click(function () {
+                // alert('*******************')
+                var img = $(this);
+                $.getJSON('/captcha/refresh', function (data) {
+                    console.log(data);
+                    img.attr('src', data['image_url']);
+                    $('#id_captcha_0').val(data['key'])
+                })
+            });
+
+            //验证是否正确
+            $('#id_captcha_1').blur(function () {
+                var $this = $(this);
+                var key = $('#id_captcha_0').val();
+                var code = $(this).val();
+
+                $.getJSON('{% url 'myApp:valide_code' %}',{key:key,code:code},function (data) {
+                    console.log(data);
+                    $('#result').remove();
+                    if (data.status==1){
+                        $this.after("<p id='result'>验证码正确</p>")
+                    }else {
+                        $this.after("<p id='result'>验证码错误</p>")
+                    }
+                })
+            })
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-title">忘记密码</h3>
+    <form action="{% url 'myApp:forgetpwd' %}" method="post">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="form-group">
+               邮箱： {{ form.email }}
+                {#                        <label for="exampleInputEmail1">邮箱</label>#}
+                {#                        <input type="text" class="form-control" placeholder="输入邮箱" name="email">#}
+            </div>
+            <div class="form-group">
+               验证码： {{ form.captcha }}
+                {#                        <label for="exampleInputPassword1">密码</label>#}
+                {#                        <input type="password" class="form-control" placeholder="密码" name="password1">#}
+            </div>
+
+
+            <button type="submit" class="btn btn-primary btn-block">点击确认</button>
+        </div>
+    </form>
+{% endblock %}

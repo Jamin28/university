@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+    注册页面
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass1 = document.getElementById('password1').value;
+            var pass2 = document.getElementById('password2').value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("password don't match，please input again")
+            else
+                document.getElementById("password2").setCustomValidity("")
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-title">注册</h3>
+    <form action="{% url 'myApp:register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="form-group">
+                <p style="color: red;">{{ msg }}</p>
+                <label for="exampleInputEmail1">手机号</label>
+                <input type="text" class="form-control" placeholder="手机号" name="telephone">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">邮箱</label>
+                <input type="text" class="form-control" placeholder="邮箱" name="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">用户名(不得少于6个字符)</label>
+                <input type="text" class="form-control" placeholder="用户名" name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">密码</label>
+                <input type="password" class="form-control" placeholder="密码" name="password1" id="password1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">重复密码</label>
+                <input type="password" class="form-control" placeholder="重复密码" name="password2" id="password2">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">注册</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    2018票房
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-title">2018年票房排名</h3>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>电影名</th>
+                        <th>类型</th>
+                        <th>国家</th>
+                        <th>评分</th>
+                        <th>票房</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for box in boxs %}
+                        <tr>
+                            <td>{{ box.name }}</td>
+                            <td>{{ box.type }}</td>
+                            <td>{{ box.country }}</td>
+                            <td>{{ box.score }}</td>
+                            <td>{{ box.box_office }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    {% for index in boxs.paginator.page_range %}
+                        {% if index == boxs.number %}
+                            <li>{{ index }}</li>
+                        {% else %}
+                            <li>
+                                <a href="{% url 'myApp:box_office' index %}">{{ index }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
